@@ -7,6 +7,7 @@ RUN apt-get update && \
         iproute2 \
         netcat \
         socat \
+        vim \
         wget \
         tzdata \
     && rm -rf /var/lib/apt/lists/* 
