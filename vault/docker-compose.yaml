@@ -1,0 +1,11 @@
+version: '3'
+services:
+  vault:
+    image: 'vault'
+    ports:
+      - "127.0.0.1:8200:8200"
+      - "127.0.0.1:8201:8201"
+    volumes:
+      - "$PWD/config:/vault/config:ro"
+      - "$PWD/data:/vault/file:rw"
+      - "$PWD/logs:/vault/logs:rw"
