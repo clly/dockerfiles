@@ -18,7 +18,9 @@ Paste this into your terminal to just have a non TLS Vault described in this art
 ui = true
 listener "tcp" {
     address = "0.0.0.0:8200"
-    unauthenticated_metrics_access = "true"
+    telemetry {
+        unauthenticated_metrics_access = "true"
+    }
     tls_disable = 1
 }
 
@@ -46,7 +48,9 @@ EOF
 ui = true
 listener "tcp" {
     address = "0.0.0.0:8200"
-    unauthenticated_metrics_access = "true"
+    telemetry {
+        unauthenticated_metrics_access = "true"
+    }
     tls_disable = 1
 }
 
