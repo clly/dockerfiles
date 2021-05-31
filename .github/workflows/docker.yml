@@ -16,13 +16,13 @@ jobs:
       - id: set-matrix
         run: echo "::set-output name=matrix::$(packages.py)"
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      matrix: ${{ steps.get-matrix.outputs.matrix }}
   build-containers:
     needs: get-matrix
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image: ${{ steps.set-matrix-outputs.matrix }}
+        image: ${{ steps.get-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v2
         with:
