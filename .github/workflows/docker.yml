@@ -14,7 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: set-matrix
-        run: echo "::set-output name=matrix::$(./packages.py)"
+        run: |
+          packages=$(./packages.py)
+          echo "Settings packages as: $packages"
+          echo "::set-output name=matrix::$packages"
     outputs:
       matrix: ${{ steps.get-matrix.outputs.matrix }}
   build-containers:
