@@ -9,7 +9,7 @@ on:
     - cron: 0 12 * * SAT
 
 jobs:
-  get-matrix:
+  get-images-matrix:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,13 +19,13 @@ jobs:
           echo "Settings packages as: $packages"
           echo "::set-output name=matrix::$packages"
     outputs:
-      matrix: ${{ steps.get-matrix.outputs.matrix }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
   build-containers:
-    needs: get-matrix
+    needs: get-images-matrix
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image: ${{ fromJson(needs.get-matrix.outputs.matrix) }}
+        image: ${{ fromJson(needs.get-images-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v2
         with:
