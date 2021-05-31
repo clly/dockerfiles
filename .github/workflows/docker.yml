@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image: ${{ steps.get-matrix.outputs.matrix }}
+        image: ${{ fromJson(needs.get-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v2
         with:
