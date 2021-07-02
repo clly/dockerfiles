@@ -1,0 +1,15 @@
+tailspin {
+    hosts /etc/coredns/tailspin.hosts {
+        reload 0
+        fallthrough
+    }
+    whoami
+}
+
+. {
+    cache {
+        success 500
+        denial 30
+    }
+    forward . 8.8.8.8
+}
